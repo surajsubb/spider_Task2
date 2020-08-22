@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <link rel="stylesheet" href="quiz.css"> 
+		 <script type="text/javascript" src='quiz.js'> </script>
+		 <script type="text/javascript" src='QandA.js'> </script>
+	</head>
+	<body>
+	    <div class = "QandA">
+			<input id ="start" type="submit" value = "start covid quiz" onclick="initializequiz()">
+		    <div class = "question">
+			    <p id="question_text"></p>
+		    </div>
+		    <div class="choices">
+			    <input id="option1" type="submit" onclick="checkAnswer(1);" >
+			    <input id="option2" type="submit" onclick="checkAnswer(2);">
+			    <input id="option3" type="submit" onclick="checkAnswer(3);">
+				<input id="option4" type="submit" onclick="checkAnswer(4);">
+				<input id="next"  type="submit" value ="next" onclick="display_QandA(1);">
+				<input id="previous" type="submit" value ="previous" onclick="display_QandA(-1);">
+				<!---<input id ="tester" type="submit" value = "tester" onclick="random(1,3)"> -->
+		    </div>
+		</div>
+	</body>
+</html>
+<script>hide_buttons()</script>
