@@ -28,24 +28,23 @@ function display_QandA(go){
         document.getElementById("option2").value = question[curr_question].option2;
         document.getElementById("option3").value = question[curr_question].option3;
         document.getElementById("option4").value = question[curr_question].option4;  
-        display_buttons();
+        display_buttons("next");
+        display_buttons("previous");
+        for(i=0;i<4;i++){
+            if(question[curr_question]["option"+(i+1)] != " "){
+                display_buttons("option"+(i+1))
+            }
+            else{
+                hide_buttons("option"+(i+1))
+            }
+        }
     }
 }
-function hide_buttons(){
-    document.getElementById("option1").style.display = "none";
-    document.getElementById("option2").style.display = "none";
-    document.getElementById("option3").style.display = "none";
-    document.getElementById("option4").style.display = "none";
-    document.getElementById("next").style.display = "none";
-    document.getElementById("previous").style.display = "none";
+function hide_buttons(id){
+    document.getElementById(id).style.display = "none";
 }
-function display_buttons(){
-    document.getElementById("option1").style.display = "block";
-    document.getElementById("option2").style.display = "block";
-    document.getElementById("option3").style.display = "block";
-    document.getElementById("option4").style.display = "block";
-    document.getElementById("next").style.display = "block";
-    document.getElementById("previous").style.display = "block";
+function display_buttons(id){
+    document.getElementById(id).style.display = "block";
 }
 function checkAnswer(button_clicked){
     if(question[curr_question]["option"+button_clicked] == question[curr_question].right_answer){
