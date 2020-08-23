@@ -13,6 +13,8 @@
 			<input id ="start" type="submit" value = "start covid quiz" onclick="initializequiz()">
 		</div>
 	    <div id = "QandA">
+			<audio id="correct_sound" src = "correct.wav" preload = "auto"></audio>
+			<audio id="wrong_sound" src = "wrong.mp3" preload = "auto"></audio>
 		    <div class = "question">
 			    <p id="question_text"></p>
 		    </div>
@@ -29,6 +31,7 @@
 			<input id="next"  type="submit" value ="next" onclick="display_QandA(1);">
 		</div>
 		<div id = "endgame">
+			<p id = "questions_answered"></p>
 			<p id = "score_text"></p>
 			<input id = "score" type="submit" value = "view score" onclick="view_score()">
 		</div>

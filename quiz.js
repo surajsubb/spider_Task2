@@ -21,7 +21,8 @@ function initializequiz(){
     hide_class("initial");
 }
 function display_QandA(go){
-    document.getElementById("QandA").style.border = "2px solid black";
+    document.getElementById("QandA").style.border = "3px solid white";
+    document.getElementById("QandA").style.backgroundColor = "rgb(23, 23, 163)";
     if(!((curr_random_question+go > -1) && (curr_random_question+go < question.length))){
         return;
     }
@@ -76,6 +77,12 @@ function checkAnswer(button_clicked){
     question[curr_question].answered = true;
     if(question[curr_question]["option"+button_clicked] == question[curr_question].right_answer){
         score++;
+        var x = document.getElementById("correct_sound");
+        x.play();
+    }
+    else{
+        var x = document.getElementById("wrong_sound");
+        x.play();
     }
     question[curr_question].option_answered = button_clicked;
     display_answer_colors(button_clicked);
@@ -110,14 +117,15 @@ function answered_all(){
     endgame();
 }
 function endgame(){
-    document.getElementById("score_text").innerHTML = "All questions have been answered";
+    document.getElementById("questions_answered").innerHTML = "All questions have been answered";
     display_buttons("endgame");
 }
 function view_score(){
     hide_buttons("QandA");
     hide_class("traverse");
     hide_buttons("score");
-    document.getElementById("score_text").innerHTML = "Score: "+ score;
+    document.getElementById("questions_answered").innerHTML = "";
+    document.getElementById("score_text").innerHTML = "Your score is: "+ score;
 }
 function keyDown(e) {
     if ((e.keyCode == 37)|| (e.keyCode == 65)){ //left arrow and A
