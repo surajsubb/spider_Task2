@@ -57,7 +57,7 @@ function checkAnswer(button_clicked){
 
 /*TODO
 #get the buttons hidden, line 28 (done)
-#get questions
+#get questions (done?)
 #make it look nice
 #notify user of correct answer properly
 #score of the quiz
