@@ -5,7 +5,9 @@ let question = [
         "option2": "It's a term that stands for Coronavirus Disease 2019, the year it was first identified.",
         "option3": "It refers to the 19 molecules that make up the virus",
         "option4": " ",
-        "right_answer": "It's a term that stands for Coronavirus Disease 2019, the year it was first identified."
+        "right_answer": "It's a term that stands for Coronavirus Disease 2019, the year it was first identified.",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "What other viruses belong to the coronavirus family?",
@@ -13,7 +15,9 @@ let question = [
         "option2": "SARS and MERS",
         "option3": "SARS and HIV",
         "option4": "MERS and influenza",
-        "right_answer": "SARS and MERS"
+        "right_answer": "SARS and MERS",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "There are currently vaccines for the following coronaviruses:",
@@ -21,7 +25,9 @@ let question = [
         "option2": "MERS",
         "option3": "SARS and MERS",
         "option4": "none of the above",
-        "right_answer": "none of the above"
+        "right_answer": "none of the above",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "What is a virus?",
@@ -29,7 +35,9 @@ let question = [
         "option2": "A sub-microscopic infectious agent that replicates only inside the living cells of an organism",
         "option3": "A multicellular organism with chlorophyll as its primary photosynthetic pigment",
         "option4": " ",
-        "right_answer": "A sub-microscopic infectious agent that replicates only inside the living cells of an organism"
+        "right_answer": "A sub-microscopic infectious agent that replicates only inside the living cells of an organism",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "What is the official name of the virus as designated by the World Health Organization (WHO)?",
@@ -37,7 +45,9 @@ let question = [
         "option2": "Covid-19",
         "option3": "Wuhan flu",
         "option4": " ",
-        "right_answer": "Sars-CoV-2"
+        "right_answer": "Sars-CoV-2",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "About what percentage of infected people recover without needing hospital treatment according to the World Health Organisation website?",
@@ -45,7 +55,9 @@ let question = [
         "option2": "70%",
         "option3": "80%",
         "option4": "90%",
-        "right_answer": "80%"
+        "right_answer": "80%",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "Which of these is NOT listed by the WHO as a symptom of coronavirus?",
@@ -53,7 +65,9 @@ let question = [
         "option2": "dry cough",
         "option3": "Blurred vision",
         "option4": "nasal Congestion",
-        "right_answer": "Blurred vision"
+        "right_answer": "Blurred vision",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "What is more effective at removing the coronavirus from your hands",
@@ -61,7 +75,9 @@ let question = [
         "option2": "Soap and water",
         "option3": " ",
         "option4": " ",
-        "right_answer": "Soap and water"
+        "right_answer": "Soap and water",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "What does the virus attach itself to when it enters the human body?",
@@ -69,7 +85,9 @@ let question = [
         "option2": "Ace-2 receptors in the lining of the airways",
         "option3": "Red blood cells",
         "option4": " ",
-        "right_answer": "Ace-2 receptors in the lining of the airways"
+        "right_answer": "Ace-2 receptors in the lining of the airways",
+        "answered": false,
+        "option_answered": " "
     },
     {
         "question": "How long can the virus survive on plastic and stainless steel surfaces, according to studies?",
@@ -77,6 +95,8 @@ let question = [
         "option2": "24 to 60 hours",
         "option3": "4 to 12 hours",
         "option4": " ",
-        "right_answer": "72 hours or more"
+        "right_answer": "72 hours or more",
+        "answered": false,
+        "option_answered": " "
     }
 ];

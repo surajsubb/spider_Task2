@@ -6,7 +6,10 @@
 		 <script type="text/javascript" src='QandA.js'> </script>
 	</head>
 	<body>
-		<div id = "initial">
+		<div class = "initial">
+			<h1>Covid-19 Quiz</h1>
+			<h2 class = "rules">=> click next(right arrow key) or previous(left arrow key) to move between questions</h2>
+			<h2 class = "rules">=> once clicked, answer cannot be changed</h2>
 			<input id ="start" type="submit" value = "start covid quiz" onclick="initializequiz()">
 		</div>
 	    <div class = "QandA">
@@ -24,6 +27,10 @@
 		<div class = "traverse">
 			<input id="previous" type="submit" value ="previous" onclick="display_QandA(-1);">
 			<input id="next"  type="submit" value ="next" onclick="display_QandA(1);">
+		</div>
+		<div id = "endgame">
+			<p id = "score_text"></p>
+			<input id = "score" type="submit" value = "view score" onclick="view_score()">
 		</div>
 	</body>
 </html>
