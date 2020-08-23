@@ -19,9 +19,9 @@ function initializequiz(){
     document.addEventListener('keydown', keyDown, false);
     display_QandA(0);
     hide_class("initial");
-
 }
 function display_QandA(go){
+    document.getElementById("QandA").style.border = "2px solid black";
     if(!((curr_random_question+go > -1) && (curr_random_question+go < question.length))){
         return;
     }
@@ -114,7 +114,7 @@ function endgame(){
     display_buttons("endgame");
 }
 function view_score(){
-    hide_class("QandA");
+    hide_buttons("QandA");
     hide_class("traverse");
     hide_buttons("score");
     document.getElementById("score_text").innerHTML = "Score: "+ score;
@@ -136,9 +136,9 @@ function keyDown(e) {
 /*TODO
 #get the buttons hidden, line 28 (done)
 #get questions (done?)
-#make it look nice
+#make it look nice(ig)
 #notify user of correct answer properly(done)
-#score of the quiz
+#score of the quiz(done)
 #input to take in users name and then display it
 #side navbar
 #store highscore and stuff
