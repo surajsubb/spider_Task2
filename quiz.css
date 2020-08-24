@@ -57,3 +57,11 @@ input {
     font-size: 30px;
     color: #ffffff;
 }
+#time{
+    float: left;
+    margin-left: 100px;
+}
+body{
+    max-width: 1000px;
+    margin: 20px;
+}
