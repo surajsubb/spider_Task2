@@ -2,6 +2,8 @@ let questions_list_random = [ ]
 let curr_random_question
 let curr_question
 let score = 0;
+let Time = 600;
+let timer
 function random(mn, mx) {   
     return Math.floor(Math.random() * (mx - mn)) + mn;  
 }
@@ -18,6 +20,7 @@ function initializequiz(){
     }
     document.addEventListener('keydown', keyDown, false);
     display_QandA(0);
+    timer = setInterval("time()",100);
     hide_class("initial");
 }
 function display_QandA(go){
@@ -98,7 +101,7 @@ function display_answer_colors(button_clicked){
     }
     for(i=0;i<4;i++){
         if(question[curr_question]["option"+(i+1)] == question[curr_question].right_answer){
-            right_option = "option"+(i+1);
+           right_option = "option"+(i+1);
         }
     }
     if(question[curr_question]["option"+button_clicked] == question[curr_question].right_answer){
@@ -114,10 +117,22 @@ function answered_all(){
         if(question[i].answered == false)
             return;
     }
-    endgame();
+    endgame(1);
 }
-function endgame(){
-    document.getElementById("questions_answered").innerHTML = "All questions have been answered";
+function endgame(num){
+    if(num == 0){
+        document.getElementById("questions_answered").innerHTML = "time has run out";
+        document.getElementById("option1").disabled = true;
+        document.getElementById("option2").disabled = true;
+        document.getElementById("option3").disabled = true;
+        document.getElementById("option4").disabled = true;
+        document.getElementById("next").disabled = true;
+        document.getElementById("previous").disabled = true;
+    }
+    else{
+        document.getElementById("questions_answered").innerHTML = "All questions have been answered";
+        clearInterval(timer);
+    }
     display_buttons("endgame");
 }
 function view_score(){
@@ -126,6 +141,14 @@ function view_score(){
     hide_buttons("score");
     document.getElementById("questions_answered").innerHTML = "";
     document.getElementById("score_text").innerHTML = "Your score is: "+ score;
+    document.getElementById("time").innerHTML = "Time taken: " + ((600-Time)/10) + " sec";
+}
+function time(){
+    document.getElementById("time").innerHTML = "Time left(sec): " + ((--Time)/10);
+    if(Time == 0){
+        clearInterval(timer);
+        endgame(0);
+    }
 }
 function keyDown(e) {
     if ((e.keyCode == 37)|| (e.keyCode == 65)){ //left arrow and A
