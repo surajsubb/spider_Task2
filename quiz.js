@@ -2,7 +2,7 @@ let questions_list_random = [ ]
 let curr_random_question
 let curr_question
 let score = 0;
-let Time = 600;
+let Time = 100;
 let timer
 function random(mn, mx) {   
     return Math.floor(Math.random() * (mx - mn)) + mn;  
@@ -22,15 +22,11 @@ function initializequiz(){
     display_QandA(0);
     timer = setInterval("time()",100);
     hide_class("initial");
+    for(i=0;i<10;i++){
+		display_buttons("n"+i)
+	}
 }
-function display_QandA(go){
-    document.getElementById("QandA").style.border = "3px solid white";
-    document.getElementById("QandA").style.backgroundColor = "rgb(23, 23, 163)";
-    if(!((curr_random_question+go > -1) && (curr_random_question+go < question.length))){
-        return;
-    }
-    curr_random_question+=go;
-    curr_question = questions_list_random[curr_random_question];
+function display(){
     if(question[curr_question].answered == false){
         document.getElementById("option1").disabled = false;
         document.getElementById("option2").disabled = false;
@@ -43,21 +39,39 @@ function display_QandA(go){
     else{
         display_answer_colors(question[curr_question].option_answered);
     }
-        document.getElementById("question_text").innerHTML = question[curr_question].question;
-        document.getElementById("option1").value = question[curr_question].option1;
-        document.getElementById("option2").value = question[curr_question].option2;
-        document.getElementById("option3").value = question[curr_question].option3;
-        document.getElementById("option4").value = question[curr_question].option4;  
-        display_buttons("next");
-        display_buttons("previous");
-        for(i=0;i<4;i++){
-            if(question[curr_question]["option"+(i+1)] != " "){
-                display_buttons("option"+(i+1))
-            }
-            else{
-                hide_buttons("option"+(i+1))
-            }
+    document.getElementById("question_text").innerHTML = question[curr_question].question;
+    document.getElementById("option1").value = question[curr_question].option1;
+    document.getElementById("option2").value = question[curr_question].option2;
+    document.getElementById("option3").value = question[curr_question].option3;
+    document.getElementById("option4").value = question[curr_question].option4;  
+    display_buttons("next");
+    display_buttons("previous");
+    for(i=0;i<4;i++){
+        if(question[curr_question]["option"+(i+1)] != " "){
+            display_buttons("option"+(i+1))
         }
+        else{
+            hide_buttons("option"+(i+1))
+        }
+    }
+    display_nav_colors();
+}
+function display_QandA(go){
+    document.getElementById("QandA").style.border = "3px solid white";
+    document.getElementById("QandA").style.backgroundColor = "rgb(23, 23, 163)";
+    document.getElementById("navbar").style.border = "2px solid white";
+    if(!((curr_random_question+go > -1) && (curr_random_question+go < question.length))){
+        return;
+    }
+    curr_random_question+=go;
+    curr_question = questions_list_random[curr_random_question];
+    display();
+    
+}
+function go_to(num){
+    curr_random_question = num;
+    curr_question = questions_list_random[curr_random_question];
+    display();
 }
 function hide_buttons(id){
     document.getElementById(id).style.display = "none";
@@ -112,6 +126,25 @@ function display_answer_colors(button_clicked){
         document.getElementById(right_option).style.background = "green";
     }
 }
+function display_nav_colors(){
+    for(i=0;i<questions_list_random.length;i++){
+        num = questions_list_random[i];
+        option_num = question[num].option_answered
+        if(question[num].answered == true){
+            if(question[num]["option"+option_num] == question[num].right_answer){
+                document.getElementById("n"+i).style.background = "green";
+            }
+            else{
+                document.getElementById("n"+i).style.background = "red";
+            }
+        }
+        else{
+            document.getElementById("n"+i).style.background = "black";
+        }
+
+    }
+    document.getElementById("n"+curr_random_question).style.background = "rgb(100,100,100)";
+}
 function answered_all(){
     for(i=0;i<question.length;i++){
         if(question[i].answered == false)
@@ -121,13 +154,16 @@ function answered_all(){
 }
 function endgame(num){
     if(num == 0){
-        document.getElementById("questions_answered").innerHTML = "time has run out";
+        document.getElementById("questions_answered").innerHTML = "Time has run out";
         document.getElementById("option1").disabled = true;
         document.getElementById("option2").disabled = true;
         document.getElementById("option3").disabled = true;
         document.getElementById("option4").disabled = true;
         document.getElementById("next").disabled = true;
         document.getElementById("previous").disabled = true;
+        for(i=0;i<questions_list_random.length;i++){
+            document.getElementById("n"+i).disabled = true;
+        }
     }
     else{
         document.getElementById("questions_answered").innerHTML = "All questions have been answered";
@@ -140,7 +176,7 @@ function view_score(){
     hide_class("traverse");
     hide_buttons("score");
     document.getElementById("questions_answered").innerHTML = "";
-    document.getElementById("score_text").innerHTML = "Your score is: "+ score;
+    document.getElementById("score_text").innerHTML = "Your score is: "+ score + "/10";
     document.getElementById("time").innerHTML = "Time taken: " + ((600-Time)/10) + " sec";
 }
 function time(){

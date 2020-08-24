@@ -42,7 +42,6 @@ input {
     max-width: 1000px;
     text-align: center;
     position: relative;
-    /*background-color: rgb(23, 23, 163);*/
     margin-top: 10px;
     overflow: auto;
 }
@@ -57,11 +56,25 @@ input {
     font-size: 30px;
     color: #ffffff;
 }
-#time{
+#time,#score_text{
     float: left;
     margin-left: 100px;
 }
 body{
     max-width: 1000px;
     margin: 20px;
+    min-width: 500px;;
+}
+#navbar input{
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    text-align: center;
+}
+#navbar{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-row: 1;
+    margin: 5px;
+    grid-column-gap: 5px;
 }
