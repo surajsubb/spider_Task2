@@ -37,10 +37,13 @@ input {
     margin: 30 auto; 
     border: 2px dotted white;
     border-radius: 10px;
+    padding: 5px;
+    font-size: 35px;
+    background: black;
 }
 #QandA{
     /*margin:*/ 
-    height: 600px;
+    height: 650px;
     max-width: 1000px;
     text-align: center;
     position: relative;
@@ -48,6 +51,8 @@ input {
     margin-left:10px;
     overflow: auto;
     border-radius: 10px;
+    /*background-image: url('images/cat1.jpg');*/
+    background-size: cover;
 }
 #endgame{
     display: none;
@@ -76,7 +81,7 @@ input {
     text-align: left;
     border: 2px solid white;
     border-radius: 10px;
-    margin: 10px auto;
+    margin: 10px;
 
 }
 #score_text{
@@ -99,6 +104,7 @@ body{
     margin-right: 2.5px;
     margin-left: 2.5px;
     text-align: center;
+    font-size: 25px;
 }
 #navbar{
     display: grid;
@@ -121,7 +127,6 @@ table{
 	float: center;
 	width: 300px;
 	height: 450px;
-    max-width: 290px;
     margin: 10px;
 }
 td{
@@ -135,7 +140,7 @@ td{
 	max-width: 290px;
 	max-height: 50px;
 	padding: 10px;
-	margin: 6px;
+	margin: 100px;
 }
 th{
 	border-bottom: 3px dotted white;

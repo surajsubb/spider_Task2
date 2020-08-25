@@ -31,6 +31,7 @@ function initializequiz(){ // intitialize variables and make the questions in ra
     display_QandA(0);
     timer = setInterval("time()",100);
     hide_class("initial");
+    hide_class("scoreboard");
     for(i=0;i<10;i++){
 		display_buttons("n"+i)
 	}
@@ -78,6 +79,7 @@ function display_QandA(go){ // used to go from one question to another
     }
     curr_random_question+=go;
     curr_question = questions_list_random[curr_random_question];
+    document.getElementById("QandA").style.backgroundImage = "url('images/img"+ (curr_random_question+1) + ".jpg')";
     display();
     
 }
@@ -198,6 +200,7 @@ function view_score(){ // shows score and time taken
     hide_buttons("QandA");
     hide_class("traverse");
     hide_buttons("score");
+    display_class("scoreboard");
     document.getElementById("questions_answered").innerHTML = "";
     document.getElementById("score_text").innerHTML = "Your score is: "+ score + "/10";
     document.getElementById("time").innerHTML = "Time taken: " + ((600-Time)/10) + " sec";
