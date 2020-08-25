@@ -34,7 +34,9 @@ input {
     float: left;
 }
 #question_text{
-    margin-bottom: 30px;
+    margin: 30 auto; 
+    border: 2px dotted white;
+    border-radius: 10px;
 }
 #QandA{
     /*margin:*/ 
@@ -90,17 +92,26 @@ body{
     min-width: 500px;;
 }
 #navbar input{
-    height: 50px;
-    width: 50px;
-    margin: 5px;
+    height: 70px;
+    width: 70px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
     text-align: center;
 }
 #navbar{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    margin: 5px;
+    margin-left: 90px;
     grid-column-gap: 5px;
     border-radius: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: auto;
+    padding-right: 2.5px;
+    padding-left: 2.5px;
+    
 }
 table{
 	font-size: 30px;
@@ -112,7 +123,6 @@ table{
 	height: 450px;
     max-width: 290px;
     margin: 10px;
-    
 }
 td{
     font-size: 30px;

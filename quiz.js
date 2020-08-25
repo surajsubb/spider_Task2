@@ -9,6 +9,11 @@ function random(mn, mx) {
 }
 function initializequiz(){ // intitialize variables and make the questions in random order
     set_to_zero();
+    let name = show_name();
+    if(name == ""){
+        document.getElementById("name").placeholder = "Enter Name First!";
+        return;
+    }
     curr_random_question = 0;
     let questions_list = [ ]
     for(i=0;i<question.length;i++){
@@ -65,8 +70,11 @@ function display_QandA(go){ // used to go from one question to another
     document.getElementById("QandA").style.border = "3px solid white";
     document.getElementById("QandA").style.backgroundColor = "rgb(23, 23, 163)";
     document.getElementById("navbar").style.border = "2px solid white";
-    if(!((curr_random_question+go > -1) && (curr_random_question+go < question.length))){
-        return;
+    if(curr_random_question+go == -1){
+        go = 9;
+    }
+    else if (curr_random_question+go == question.length){
+        go = -9
     }
     curr_random_question+=go;
     curr_question = questions_list_random[curr_random_question];
@@ -214,18 +222,24 @@ function keyDown(e) { // checks if right(D) or left (A) key is clicked
             document.getElementById("next").click();
          //  }
         
-    }
+    } 
 }
 function store_score(score = "undefined"){
+    let name = document.getElementById("name").value
     for( i = 0 ; i < 5 ; i++){
-        let temp = localStorage.getItem(i+"score");
-        if((score >= temp )||(temp === "0")){
+        let str = localStorage.getItem(i+"score");
+        temp = str.match(/(\d+)/);
+        name_temp = str.match(/(\D+)/);
+        if((score >= temp[0] )||(temp[0] === "0")){
             for( j = i ; j < 4 ; j++){
-                temp1=localStorage.getItem((j+1)+"score")
-                localStorage.setItem((j+1)+"score",temp);
+                let str1=localStorage.getItem((j+1)+"score")
+                name1 = str1.match(/(\D+)/);
+                temp1 = str1.match(/(\d+)/);
+                localStorage.setItem((j+1)+"score",name_temp[0]+temp[0]);
                 temp=temp1;
+                name_temp=name1;
             }
-            localStorage.setItem(i+"score",score);
+            localStorage.setItem(i+"score",name+": "+score);
             break;
         }
     }
@@ -239,12 +253,15 @@ function get_score(){
 function set_to_zero(def = 0){
     if((localStorage.getItem("initialize") != 0)||(def == 1)){
         for( i = 0 ; i < 5 ; i++){
-            localStorage.setItem(i+"score", "0");
+            localStorage.setItem(i+"score", "ENH:0");
         }
         localStorage.setItem("initialize",0);
     }
     get_score();
     
+}
+function show_name(){
+    return document.getElementById("name").value;
 }
 
 /*TODO

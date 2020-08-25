@@ -10,6 +10,7 @@
 			<h1>Covid-19 Quiz</h1>
 			<h2 class = "rules">=> click next(right arrow key/D) or previous(left arrow key/A) to move between questions</h2>
 			<h2 class = "rules">=> once clicked, answer cannot be changed</h2>
+			<input id = "name" type = "text" placeholder="Enter Name then click Start">
 			<input id ="start" type="submit" value = "start covid quiz" onclick="initializequiz()">
 		</div>
 	    <div id = "QandA">
@@ -23,7 +24,6 @@
 			    <input id="option2" type="submit" onclick="checkAnswer(2);">
 			    <input id="option3" type="submit" onclick="checkAnswer(3);">
 				<input id="option4" type="submit" onclick="checkAnswer(4);">
-				<!---<input id ="tester" type="submit" value = "tester" onclick="random(1,3)"> -->
 			</div>
 			<div id="navbar">
 				<input id="n0" type="submit" onclick="go_to(0);" value = "1" >
