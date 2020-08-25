@@ -251,11 +251,11 @@ function get_score(){
     }
 }
 function set_to_zero(def = 0){
-    if((localStorage.getItem("initialize") != 0)||(def == 1)){
+    if((localStorage.getItem("set_board") != 0)||(def == 1)){
         for( i = 0 ; i < 5 ; i++){
             localStorage.setItem(i+"score", "ENH:0");
         }
-        localStorage.setItem("initialize",0);
+        localStorage.setItem("set_board",0);
     }
     get_score();
     
@@ -263,6 +263,7 @@ function set_to_zero(def = 0){
 function show_name(){
     return document.getElementById("name").value;
 }
+
 
 /*TODO
 #get the buttons hidden, line 28 (done)
