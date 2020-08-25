@@ -27,9 +27,9 @@ input {
     padding-bottom: 50px; 
 }
 .traverse input{
-    height: 70px;
+    height: 50px;
     width: 120px;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     float: left;
 }
@@ -43,10 +43,14 @@ input {
     text-align: center;
     position: relative;
     margin-top: 10px;
+    margin-left:10px;
     overflow: auto;
+    border-radius: 10px;
 }
 #endgame{
     display: none;
+    margin: 0 auto;
+    margin-top: 240px;
 }
 .initial h1{
     font-size: 50px;
@@ -58,7 +62,27 @@ input {
 }
 #time,#score_text{
     float: left;
-    margin-left: 100px;
+    text-align: left;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: block;
+}
+#time{
+    width: 250px;
+    height: 30px;
+    padding: 10px;
+    text-align: left;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 10px auto;
+
+}
+#score_text{
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
 }
 body{
     max-width: 1000px;
@@ -74,7 +98,37 @@ body{
 #navbar{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-row: 1;
     margin: 5px;
     grid-column-gap: 5px;
+    border-radius: 10px;
+}
+table{
+	font-size: 30px;
+    border: 3px solid white;
+    border-radius: 10px;
+	text-align: center;
+	float: center;
+	width: 300px;
+	height: 450px;
+    max-width: 290px;
+    margin: 10px;
+    
+}
+td{
+    font-size: 30px;
+    color: white;
+	text-align: center;
+	border: 3px solid white;
+	border-radius: 10px;
+	width: 290px;
+	height: 50px;
+	max-width: 290px;
+	max-height: 50px;
+	padding: 10px;
+	margin: 6px;
+}
+th{
+	border-bottom: 3px dotted white;
+    padding: 5px;
+    color: white
 }

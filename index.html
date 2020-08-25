@@ -8,14 +8,14 @@
 	<body>
 		<div class = "initial">
 			<h1>Covid-19 Quiz</h1>
-			<h2 class = "rules">=> click next(right arrow key) or previous(left arrow key) to move between questions</h2>
+			<h2 class = "rules">=> click next(right arrow key/D) or previous(left arrow key/A) to move between questions</h2>
 			<h2 class = "rules">=> once clicked, answer cannot be changed</h2>
 			<input id ="start" type="submit" value = "start covid quiz" onclick="initializequiz()">
 		</div>
 	    <div id = "QandA">
 			<audio id="correct_sound" src = "correct.wav" preload = "auto"></audio>
 			<audio id="wrong_sound" src = "wrong.mp3" preload = "auto"></audio>
-		    <div class = "question">
+		    <div id = "question">
 			    <p id="question_text"></p>
 		    </div>
 		    <div class="choices">
@@ -50,16 +50,36 @@
 			<p id = "time"></p>
 			<p id = "score_text"></p>
 		</div>
+		<div class="scoreboard">
+			<table>
+				<tr>
+					<th scope='col'>Scoreboard</th>
+				</tr>
+				<tr>
+					<td id="0score"></td>
+				</tr>
+				<tr>
+					<td id="1score"></td>
+				</tr>
+				<tr>
+					<td id="2score"></td>
+				</tr>
+				<tr>
+					<td id="3score"></td>
+				</tr>
+				<tr>
+					<td id="4score"></td>
+				</tr>
+				<tr>
+					<td class = "reset"><input class="reset_Scoreboard" type="submit" value = "Reset Scoreboard" onClick="set_to_zero(1)"></td>
+				</tr>
+			</table>
+		</div>
 	</body>
 </html>
 <script>
-	hide_buttons("option1")
-	hide_buttons("option2")
-	hide_buttons("option3")
-	hide_buttons("option4")
-	hide_buttons("next")
-	hide_buttons("previous")
-	for(i=0;i<10;i++){
-		hide_buttons("n"+i)
-	}
+	hide_buttons("QandA");
+	hide_class("traverse");
+	hide_buttons("timer");
+	get_score();
 </script>
