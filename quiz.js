@@ -37,6 +37,7 @@ function initializequiz(){ // intitialize variables and make the questions in ra
 	}
 }
 function display(){ // display questions and options
+    document.getElementById("QandA").style.backgroundImage = "url('images/img"+ (curr_question+1) + ".jpg')";
     if(question[curr_question].answered == false){
         document.getElementById("option1").disabled = false;
         document.getElementById("option2").disabled = false;
@@ -79,7 +80,6 @@ function display_QandA(go){ // used to go from one question to another
     }
     curr_random_question+=go;
     curr_question = questions_list_random[curr_random_question];
-    document.getElementById("QandA").style.backgroundImage = "url('images/img"+ (curr_random_question+1) + ".jpg')";
     display();
     
 }
