@@ -10,6 +10,8 @@
 			<h1>Covid-19 Quiz</h1>
 			<h2 class = "rules">=> click next(right arrow key/D) or previous(left arrow key/A) to move between questions</h2>
 			<h2 class = "rules">=> once clicked, answer cannot be changed</h2>
+			<h2 class = "rules">=> there will be 10 questions, and in random order every time</h2>
+			<h2 class = "rules">=> the quiz will be timed for 60 seconds after which you will not be able to answer anymore</h2>
 			<input id = "name" type = "text" placeholder="Enter Name then click Start">
 			<input id ="start" type="submit" value = "start covid quiz" onclick="initializequiz()">
 		</div>
@@ -42,14 +44,6 @@
 				<input id = "score" type="submit" value = "view score" onclick="view_score()">
 			</div>
 		</div>
-		<div class = "traverse">
-			<input id="previous" type="submit" value ="previous" onclick="display_QandA(-1);">
-			<input id="next"  type="submit" value ="next" onclick="display_QandA(1);">
-		</div>
-		<div id = "timer">
-			<p id = "time"></p>
-			<p id = "score_text"></p>
-		</div>
 		<div class="scoreboard">
 			<table>
 				<tr>
@@ -75,12 +69,24 @@
 				</tr>
 			</table>
 		</div>
+		<div class = "traverse">
+			<input id="previous" type="submit" value ="previous" onclick="display_QandA(-1);">
+			<input id="next"  type="submit" value ="next" onclick="display_QandA(1);">
+		</div>
+		<div id = "timer">
+			<p id = "time"></p>
+			<p id = "score_text"></p>
+		</div>
+		<div id = "retake">
+			<input id = "retake_button" type = "submit" value = "retake test" onclick="retake();">
+		</div>
 	</body>
 </html>
 <script>
 	hide_buttons("QandA");
 	hide_class("traverse");
 	hide_buttons("timer");
+	hide_buttons("retake");
 	set_to_zero();
 	get_score();
 </script>

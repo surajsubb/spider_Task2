@@ -6,7 +6,6 @@ html {
 p{
     font-size: 30px;
     color: #ffffff;
-
 }
 input:hover{
     background-color: rgb(30, 30, 30);
@@ -17,8 +16,6 @@ input {
     background-color: black;
     font-size: 20px;
     color: #ffffff;
-    position: center;
-    resize: horizontal;
     display: block;
     margin: 10px auto;
     padding: 20px;
@@ -33,26 +30,32 @@ input {
     margin: 10px;
     float: left;
 }
+#question{
+    margin: auto;
+    padding: 20px;
+}
 #question_text,#questions_answered{
+    max-width: 600px;
     margin: 30 auto; 
     border: 2px dotted white;
     border-radius: 10px;
     padding: 5px;
     font-size: 35px;
     background: black;
+    display: block;
+    margin: 0 auto;
 }
 #QandA{
-    /*margin:*/ 
     height: 650px;
-    max-width: 1000px;
+    width: 1000px;
     text-align: center;
     position: relative;
     margin-top: 10px;
     margin-left:10px;
     overflow: auto;
     border-radius: 10px;
-    /*background-image: url('images/cat1.jpg');*/
     background-size: cover;
+    float: left;
 }
 #endgame{
     display: none;
@@ -62,6 +65,9 @@ input {
 .initial h1{
     font-size: 50px;
     color: #ffffff;
+}
+h2{
+    margin: 10px;
 }
 .rules{
     font-size: 30px;
@@ -109,6 +115,7 @@ body{
 #navbar{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
     margin-left: 90px;
     grid-column-gap: 5px;
     border-radius: 10px;
