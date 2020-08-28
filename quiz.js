@@ -5,14 +5,18 @@ let score
 let Time
 let timer
 let game
+let start_time
+let final_score
 function random(mn, mx) {   
     return Math.floor(Math.random() * (mx - mn)) + mn;  
 }
 function initializequiz(){ // intitialize variables and make the questions in random order
     set_to_zero();
     let name = show_name();
-    Time = 20;
+    Time = 600;
+    start_time = 600;
     score = 0;
+    final_score = 0;
     game = true; 
     if(name == ""){
         document.getElementById("name").placeholder = "Enter Name First!";
@@ -33,6 +37,8 @@ function initializequiz(){ // intitialize variables and make the questions in ra
     display_class("traverse");
 	display_buttons("timer");
     display_QandA(0);
+    document.getElementById("score_text").style.backgroundColor = "rgba(0,0,0,0)";
+    document.getElementById("time").style.backgroundColor = "rgba(0,0,0,0)";
     timer = setInterval("time()",100);
     hide_class("initial");
     hide_class("scoreboard");
@@ -47,6 +53,15 @@ function display(){ // display questions and options
         document.getElementById("option2").disabled = false;
         document.getElementById("option3").disabled = false;
         document.getElementById("option4").disabled = false; 
+        for(i=0;i<4;i++){
+            document.getElementById("option"+(i+1)).style.background = "black";
+        }
+    }
+    else if((question[curr_question].answered == false) && (game == false)){
+        document.getElementById("option1").disabled = true;
+        document.getElementById("option2").disabled = true;
+        document.getElementById("option3").disabled = true;
+        document.getElementById("option4").disabled = true; 
         for(i=0;i<4;i++){
             document.getElementById("option"+(i+1)).style.background = "black";
         }
@@ -70,7 +85,9 @@ function display(){ // display questions and options
         }
     }
     display_nav_colors();
-    document.getElementById("score_text").innerHTML = "Your score is: "+ score + "/10";
+    if(game == true){
+        document.getElementById("score_text").innerHTML = "Correct Answers: "+ score + "/10";
+    }
 }
 function display_QandA(go){ // used to go from one question to another
     document.getElementById("QandA").style.border = "3px solid white";
@@ -111,25 +128,46 @@ function display_class(Class){ // display the element when id is given
     }
 }
 function checkAnswer(button_clicked){ // check option clicked
-    //let right_option
     /*document.getElementById("option1").disabled = true;
     document.getElementById("option2").disabled = true;
     document.getElementById("option3").disabled = true;
     document.getElementById("option4").disabled = true; */
+    let curr_time = Time;
+    let time_diff = start_time - curr_time;
     question[curr_question].answered = true;
     if(question[curr_question]["option"+button_clicked] == question[curr_question].right_answer){
         score++;
+        score_calc(time_diff,true);
+        
         /*var x = document.getElementById("correct_sound");
         x.play();*/
-        document.getElementById("score_text").innerHTML = "Your score is: "+ score + "/10";
+        document.getElementById("score_text").innerHTML = "Correct Answers: "+ score + "/10";
     }
     else{
+        //score_calc(time_diff,false);
         /*var x = document.getElementById("wrong_sound");
         x.play();*/
     }
+    start_time = curr_time;
     question[curr_question].option_answered = button_clicked;
     display_answer_colors(button_clicked);
     answered_all();
+}
+function score_calc(time_diff,answer){
+    if(answer == true){
+        if((time_diff > 0) && (time_diff <= 40)){
+            final_score+=10;
+        }
+        else if((time_diff > 40) && (time_diff <= 60 )){
+            final_score+=8;
+        }
+        else if((time_diff > 60) && (time_diff <= 80)){
+            final_score+=6;
+        }
+        else{
+            final_score+=4;
+        }
+    }
 }
 function display_answer_colors(button_clicked){ // display the colour when option is clicked
     document.getElementById("option1").disabled = true;
@@ -177,7 +215,7 @@ function answered_all(){ // to check if all the questions are answered
             return;
     }
     clearInterval(timer);
-    setTimeout("endgame(1)",3000);
+    setTimeout("endgame(1)",2000);
     //endgame(1);
 }
 function endgame(num){ // disables all the buttons and calls button to view score
@@ -213,10 +251,13 @@ function view_score(){ // shows score and time taken
     document.getElementById("navbar").style.visibility = "visible";
     display_class("scoreboard");
     display_buttons("retake");
+    display_buttons("main_menu");
     document.getElementById("questions_answered").innerHTML = "";
-    document.getElementById("score_text").innerHTML = "Your score is: "+ score + "/10";
+    document.getElementById("score_text").innerHTML = "Your score is: "+ final_score; 
+    document.getElementById("score_text").style.backgroundColor = "orange";
     document.getElementById("time").innerHTML = "Time taken: " + ((600-Time)/10) + " sec";
-    store_score(score);
+    document.getElementById("time").style.backgroundColor = "orange";
+    store_score(final_score);
     get_score();
 }
 function retake(){
@@ -228,6 +269,7 @@ function retake(){
     display_class("choices");
     display_buttons("question");
     hide_buttons("retake");
+    hide_buttons("main_menu");
     //hide_buttons("questions_answered");
     document.getElementById("navbar").style.visibility = "visible";
     document.getElementById("option1").disabled = false;
@@ -239,7 +281,24 @@ function retake(){
     for(i=0;i<questions_list_random.length;i++){
         document.getElementById("n"+i).disabled = false;
     }
+}
+function retake_button(){
+    retake();
     initializequiz();
+}
+function main_menu(){
+    retake();
+    display_class("initial");
+    display_class("scoreboard");
+    hide_buttons("QandA");
+	hide_class("traverse");
+	hide_buttons("timer");
+	hide_buttons("retake");
+	hide_buttons("main_menu");
+	set_to_zero();
+    get_score();
+    document.getElementById("name").placeholder = "Enter Name then click Start";
+
 }
 function time(){// times the quiz
     document.getElementById("time").innerHTML = "Time left(sec): " + ((--Time)/10);
@@ -284,7 +343,6 @@ function store_score(score = "undefined"){
 function get_score(){
     for(i = 0 ; i < 5 ; i++){
         document.getElementById(i+"score").innerHTML = localStorage.getItem(i+"score");
-        //alert(document.getElementById(i+"score").innerHTML);
     }
 }
 function set_to_zero(def = 0){
@@ -317,7 +375,7 @@ function show_name(){
 #center question block (done)
 #last question wait for some time(done)
 #retake test(done)
-#show all the questions with options after submitting
+#show all the questions with options after submitting(done)
 #better scoring method
 #different color scheme
 #add the sound back

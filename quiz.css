@@ -1,7 +1,7 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
-    background-color: rgb(5, 5, 73);
+    background-color: rgb(88, 3, 3);
 }
 p{
     font-size: 30px;
@@ -33,6 +33,7 @@ input {
 #question{
     margin: auto;
     padding: 20px;
+    margin-top: 100px;;
 }
 #question_text,#questions_answered{
     max-width: 600px;
@@ -79,23 +80,19 @@ h2{
     border: 2px solid white;
     border-radius: 10px;
     display: block;
+    margin: 10px;;
+    padding: 10px;
 }
 #time{
     width: 250px;
     height: 30px;
-    padding: 10px;
     text-align: left;
-    border: 2px solid white;
-    border-radius: 10px;
-    margin: 10px;
 
 }
 #score_text{
-    width: 250px;
+    width: 300px;
     height: 30px;
     text-align: center;
-    padding: 10px;
-    margin: 10px;
 }
 body{
     max-width: 1000px;
@@ -120,7 +117,7 @@ body{
     grid-column-gap: 5px;
     border-radius: 10px;
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     left: auto;
     padding-right: 2.5px;
     padding-left: 2.5px;
@@ -133,8 +130,12 @@ table{
 	text-align: center;
 	float: center;
 	width: 300px;
-	height: 450px;
-    margin: 10px;
+    height: 550px;
+    padding: 5px;
+    margin: 0px auto;
+}
+tr{
+    margin-bottom: 5px;
 }
 td{
     font-size: 30px;
@@ -147,10 +148,15 @@ td{
 	max-width: 290px;
 	max-height: 50px;
 	padding: 10px;
-	margin: 100px;
 }
 th{
 	border-bottom: 3px dotted white;
     padding: 5px;
     color: white
+}
+#reset_Scoreboard{
+    width: 280px;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
 }
