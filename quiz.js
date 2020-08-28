@@ -276,6 +276,7 @@ function main_menu(){ // takes back to page with rules and such
 	set_to_zero();
     get_score();
     document.getElementById("name").placeholder = "Enter Name then click Start";
+    document.getElementById("name").value ="";
 
 }
 function time(){// times the quiz
