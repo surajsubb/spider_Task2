@@ -42,9 +42,6 @@ function initializequiz(){ // intitialize variables and make the questions in ra
     timer = setInterval("time()",100);
     hide_class("initial");
     hide_class("scoreboard");
-    /*for(i=0;i<10;i++){
-		display_buttons("n"+i)
-	}*/
 }
 function display(){ // display questions and options
     document.getElementById("QandA").style.backgroundImage = "url('images/img"+ (curr_question+1) + ".jpg')";
@@ -128,10 +125,6 @@ function display_class(Class){ // display the element when id is given
     }
 }
 function checkAnswer(button_clicked){ // check option clicked
-    /*document.getElementById("option1").disabled = true;
-    document.getElementById("option2").disabled = true;
-    document.getElementById("option3").disabled = true;
-    document.getElementById("option4").disabled = true; */
     let curr_time = Time;
     let time_diff = start_time - curr_time;
     question[curr_question].answered = true;
@@ -139,14 +132,13 @@ function checkAnswer(button_clicked){ // check option clicked
         score++;
         score_calc(time_diff,true);
         
-        /*var x = document.getElementById("correct_sound");
-        x.play();*/
+        var x = document.getElementById("correct_sound");
+        x.play();
         document.getElementById("score_text").innerHTML = "Correct Answers: "+ score + "/10";
     }
     else{
-        //score_calc(time_diff,false);
-        /*var x = document.getElementById("wrong_sound");
-        x.play();*/
+        var x = document.getElementById("wrong_sound");
+        x.play();
     }
     start_time = curr_time;
     question[curr_question].option_answered = button_clicked;
@@ -223,28 +215,16 @@ function endgame(num){ // disables all the buttons and calls button to view scor
     display_buttons("questions_answered");
     if(num == 0){
         document.getElementById("questions_answered").innerHTML = "Time has run out";
-        /*document.getElementById("option1").disabled = true;
-        document.getElementById("option2").disabled = true;
-        document.getElementById("option3").disabled = true;
-        document.getElementById("option4").disabled = true;
-        document.getElementById("next").disabled = true;
-        document.getElementById("previous").disabled = true;
-        for(i=0;i<questions_list_random.length;i++){
-            document.getElementById("n"+i).disabled = true;
-        }*/
     }
     else{
         document.getElementById("questions_answered").innerHTML = "All questions have been answered";
     }
     display_buttons("endgame");
     hide_buttons("question");
-    //hide_buttons("navbar");
     document.getElementById("navbar").style.visibility = "hidden";
     hide_class("choices");
 }
 function view_score(){ // shows score and time taken 
-    //hide_buttons("QandA");
-    //hide_class("traverse");
     hide_buttons("endgame");
     display_buttons("question");
     display_class("choices");
@@ -260,17 +240,15 @@ function view_score(){ // shows score and time taken
     store_score(final_score);
     get_score();
 }
-function retake(){
+function retake(){ // to reset buttons and divs to retake test and go back to main menu
     for(i=0;i<question.length;i++){
         question[i].answered = false;
         question[i].option_answered = " ";
     }
-    //display_buttons("navbar");
     display_class("choices");
     display_buttons("question");
     hide_buttons("retake");
     hide_buttons("main_menu");
-    //hide_buttons("questions_answered");
     document.getElementById("navbar").style.visibility = "visible";
     document.getElementById("option1").disabled = false;
     document.getElementById("option2").disabled = false;
@@ -282,11 +260,11 @@ function retake(){
         document.getElementById("n"+i).disabled = false;
     }
 }
-function retake_button(){
+function retake_button(){ // button to retake test
     retake();
     initializequiz();
 }
-function main_menu(){
+function main_menu(){ // takes back to page with rules and such
     retake();
     display_class("initial");
     display_class("scoreboard");
@@ -309,18 +287,13 @@ function time(){// times the quiz
 }
 function keyDown(e) { // checks if right(D) or left (A) key is clicked
     if ((e.keyCode == 37)|| (e.keyCode == 65)){ //left arrow and A
-        //if(upKey == true){
             document.getElementById("previous").click();
-        //}
     }
     else if ((e.keyCode == 39)|| (e.keyCode == 68)){ //right arrow and D
-        //if(upKey == true){
-            document.getElementById("next").click();
-         //  }
-        
+            document.getElementById("next").click();   
     } 
 }
-function store_score(score = "undefined"){
+function store_score(score = "undefined"){ // puts the current final score in the proper place
     let name = document.getElementById("name").value
     for( i = 0 ; i < 5 ; i++){
         let str = localStorage.getItem(i+"score");
@@ -340,12 +313,12 @@ function store_score(score = "undefined"){
         }
     }
 }
-function get_score(){
+function get_score(){ // gets cores from local storage
     for(i = 0 ; i < 5 ; i++){
         document.getElementById(i+"score").innerHTML = localStorage.getItem(i+"score");
     }
 }
-function set_to_zero(def = 0){
+function set_to_zero(def = 0){ //sets the scoreboard to 0
     if((localStorage.getItem("set_board") != 0)||(def == 1)){
         for( i = 0 ; i < 5 ; i++){
             localStorage.setItem(i+"score", "ENH:0");
@@ -355,7 +328,7 @@ function set_to_zero(def = 0){
     get_score();
     
 }
-function show_name(){
+function show_name(){ // returns name
     return document.getElementById("name").value;
 }
 
