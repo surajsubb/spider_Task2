@@ -1,39 +1,50 @@
 html {
-    font-size: 62.5%;
     box-sizing: border-box;
-    background-color: rgb(88, 3, 3);
+    background-color: rgb(60, 60, 60);
 }
 p{
     font-size: 30px;
     color: #ffffff;
 }
 input:hover{
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(50, 50, 50);
 }
 input {
     border-radius: 10px;
-    border: 2px solid #c4c4c4;
-    background-color: black;
+    border: 4px solid #c4c4c4;
+    background: black; /*rgba(20,20,20,0.5);*/
+    backdrop-filter: blur(10px);
     font-size: 20px;
-    color: #ffffff;
+    font-weight: bolder;
+    color: white;
     display: block;
     margin: 10px auto;
     padding: 20px;
 }
+.initial h1{
+    font-size: 50px;
+    color: #ffffff;
+    position: relative;
+    width: 310px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;;
+}
+.initial{
+    border: 5px dotted white;
+    padding: 10px;
+    margin-top: 30px;
+}
 .choices{
     padding-bottom: 50px; 
 }
-.traverse input{
-    height: 50px;
-    width: 120px;
-    padding: 10px;
-    margin: 10px;
-    float: left;
+.choices input{
+    color: black;
 }
 #question{
     margin: auto;
     padding: 20px;
-    margin-top: 100px;;
+    margin-top: 100px;
 }
 #question_text,#questions_answered{
     max-width: 600px;
@@ -46,8 +57,50 @@ input {
     display: block;
     margin: 0 auto;
 }
+#QandA_scoreboard{
+    width: 100%;
+    float: left;
+}
+table{
+	font-size: 30px;
+    border: 3px solid white;
+    border-radius: 10px;
+	text-align: center;
+	float: left;
+	width: 340px;
+    height: 700px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 20px;
+    border-spacing: 10px;
+}
+td{
+    width: 100px;
+	height: 50px;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    border: 3px solid white;
+	border-radius: 10px;
+    /*padding: 10px;*/
+}
+th{
+    width: 100px;
+	height: 70px;
+	border-bottom: 3px dotted white;
+    padding: 5px;
+    color: white;
+    font-size: 50px;
+}
+#reset_Scoreboard{
+    width: 280px;
+    height: 50px;
+    padding: 0px;
+    margin: 0px auto;
+    color: white;
+}
 #QandA{
-    height: 650px;
+    height: 700px;
     width: 1000px;
     text-align: center;
     position: relative;
@@ -58,47 +111,6 @@ input {
     background-size: cover;
     float: left;
 }
-#endgame{
-    display: none;
-    margin: 0 auto;
-    margin-top: 240px;
-}
-.initial h1{
-    font-size: 50px;
-    color: #ffffff;
-}
-h2{
-    margin: 10px;
-}
-.rules{
-    font-size: 30px;
-    color: #ffffff;
-}
-#time,#score_text{
-    float: left;
-    text-align: left;
-    border: 2px solid white;
-    border-radius: 10px;
-    display: block;
-    margin: 10px;;
-    padding: 10px;
-}
-#time{
-    width: 250px;
-    height: 30px;
-    text-align: left;
-
-}
-#score_text{
-    width: 300px;
-    height: 30px;
-    text-align: center;
-}
-body{
-    max-width: 1000px;
-    margin: 20px;
-    min-width: 500px;;
-}
 #navbar input{
     height: 70px;
     width: 70px;
@@ -108,6 +120,7 @@ body{
     margin-left: 2.5px;
     text-align: center;
     font-size: 25px;
+    color: black;
 }
 #navbar{
     display: grid;
@@ -121,42 +134,67 @@ body{
     left: auto;
     padding-right: 2.5px;
     padding-left: 2.5px;
+    backdrop-filter: blur(100px);
     
 }
-table{
-	font-size: 30px;
-    border: 3px solid white;
-    border-radius: 10px;
-	text-align: center;
-	float: center;
-	width: 300px;
-    height: 550px;
-    padding: 5px;
-    margin: 0px auto;
+#endgame{
+    display: none;
+    margin: 0 auto;
+    margin-top: 240px;
 }
-tr{
-    margin-bottom: 5px;
+h2{
+    margin: 10px;
 }
-td{
+.rules{
     font-size: 30px;
-    color: white;
-	text-align: center;
-	border: 3px solid white;
-	border-radius: 10px;
-	width: 290px;
-	height: 50px;
-	max-width: 290px;
-	max-height: 50px;
-	padding: 10px;
+    color: #ffffff;
 }
-th{
-	border-bottom: 3px dotted white;
-    padding: 5px;
-    color: white
+#ipop{
+    width: 100%;
+    clear: both;
 }
-#reset_Scoreboard{
-    width: 280px;
+.traverse input{
     height: 50px;
-    padding: 0px;
-    margin: 0px;
+    width: 120px;
+    padding: 10px;
+    margin: 10px;
+    float: left;
+    width: 25%;
+    color: white;
+}
+#time,#score_text{
+    float: left;
+    text-align: left;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: block;
+    margin: 10px;;
+    padding: 10px;
+    width: 25%;
+}
+#time{
+    width: 250px;
+    height: 30px;
+    text-align: left;
+
+}
+#score_text{
+    width: 300px;
+    height: 30px;
+    text-align: center;
+}
+#restart_stuff{
+    width: 100%;
+}
+#restart_stuff div{
+    display: block;
+    margin: 10px auto;
+    color: white;
+}
+body{
+    width: 1400px;
+    margin: 20px;
+    min-width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
 }

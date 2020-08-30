@@ -41,7 +41,15 @@ function initializequiz(){ // intitialize variables and make the questions in ra
     document.getElementById("time").style.backgroundColor = "rgba(0,0,0,0)";
     timer = setInterval("time()",100);
     hide_class("initial");
-    hide_class("scoreboard");
+    display_class("scoreboard");
+    scoreboard_gradient();
+}
+function scoreboard_gradient(){
+    let color = 100;
+    for(i=0;i<5;i++){
+        document.getElementById(i+"score").style.backgroundColor = "rgb("+color+","+color+","+color+")";
+        color-=20
+    }
 }
 function display(){ // display questions and options
     document.getElementById("QandA").style.backgroundImage = "url('images/img"+ (curr_question+1) + ".jpg')";
@@ -51,7 +59,7 @@ function display(){ // display questions and options
         document.getElementById("option3").disabled = false;
         document.getElementById("option4").disabled = false; 
         for(i=0;i<4;i++){
-            document.getElementById("option"+(i+1)).style.background = "black";
+            document.getElementById("option"+(i+1)).style.background = "rgba(255,255,255,0.2)";
         }
     }
     else if((question[curr_question].answered == false) && (game == false)){
@@ -60,7 +68,7 @@ function display(){ // display questions and options
         document.getElementById("option3").disabled = true;
         document.getElementById("option4").disabled = true; 
         for(i=0;i<4;i++){
-            document.getElementById("option"+(i+1)).style.background = "black";
+            document.getElementById("option"+(i+1)).style.background = "rgba(255,255,255,0.2)";
         }
     }
     else{
@@ -132,13 +140,13 @@ function checkAnswer(button_clicked){ // check option clicked
         score++;
         score_calc(time_diff,true);
         
-        var x = document.getElementById("correct_sound");
-        x.play();
+        /*var x = document.getElementById("correct_sound");
+        x.play();*/
         document.getElementById("score_text").innerHTML = "Correct Answers: "+ score + "/10";
     }
     else{
-        var x = document.getElementById("wrong_sound");
-        x.play();
+        /*var x = document.getElementById("wrong_sound");
+        x.play();*/
     }
     start_time = curr_time;
     question[curr_question].option_answered = button_clicked;
@@ -167,7 +175,7 @@ function display_answer_colors(button_clicked){ // display the colour when optio
     document.getElementById("option3").disabled = true;
     document.getElementById("option4").disabled = true;
     for(i=0;i<4;i++){
-        document.getElementById("option"+(i+1)).style.background = "black";
+        document.getElementById("option"+(i+1)).style.background = "rgba(255,255,255,0.2)";
     }
     for(i=0;i<4;i++){
         if(question[curr_question]["option"+(i+1)] == question[curr_question].right_answer){
@@ -195,7 +203,7 @@ function display_nav_colors(){ // display navbar colors
             }
         }
         else{
-            document.getElementById("n"+i).style.background = "black";
+            document.getElementById("n"+i).style.background = "rgba(255,255,255,0.2)";
         }
 
     }
@@ -234,9 +242,11 @@ function view_score(){ // shows score and time taken
     display_buttons("main_menu");
     document.getElementById("questions_answered").innerHTML = "";
     document.getElementById("score_text").innerHTML = "Your score is: "+ final_score; 
-    document.getElementById("score_text").style.backgroundColor = "orange";
+    document.getElementById("score_text").style.backgroundColor = "white";
+    document.getElementById("score_text").style.color = "black";
     document.getElementById("time").innerHTML = "Time taken: " + ((600-Time)/10) + " sec";
-    document.getElementById("time").style.backgroundColor = "orange";
+    document.getElementById("time").style.backgroundColor = "white";
+    document.getElementById("time").style.color = "black";
     store_score(final_score);
     get_score();
 }
@@ -259,6 +269,8 @@ function retake(){ // to reset buttons and divs to retake test and go back to ma
     for(i=0;i<questions_list_random.length;i++){
         document.getElementById("n"+i).disabled = false;
     }
+    document.getElementById("score_text").style.color = "white";
+    document.getElementById("time").style.color = "white";
 }
 function retake_button(){ // button to retake test
     retake();
@@ -267,7 +279,7 @@ function retake_button(){ // button to retake test
 function main_menu(){ // takes back to page with rules and such
     retake();
     display_class("initial");
-    display_class("scoreboard");
+    hide_class("scoreboard");
     hide_buttons("QandA");
 	hide_class("traverse");
 	hide_buttons("timer");
