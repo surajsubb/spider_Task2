@@ -140,13 +140,13 @@ function checkAnswer(button_clicked){ // check option clicked
         score++;
         score_calc(time_diff,true);
         
-        /*var x = document.getElementById("correct_sound");
-        x.play();*/
+        var x = document.getElementById("correct_sound");
+        x.play();
         document.getElementById("score_text").innerHTML = "Correct Answers: "+ score + "/10";
     }
     else{
-        /*var x = document.getElementById("wrong_sound");
-        x.play();*/
+        var x = document.getElementById("wrong_sound");
+        x.play();
     }
     start_time = curr_time;
     question[curr_question].option_answered = button_clicked;
@@ -312,8 +312,11 @@ function store_score(score = "undefined"){ // puts the current final score in th
         let str = localStorage.getItem(i+"score");
         temp = str.match(/(\d+)/);
         name_temp = str.match(/(\D+)/);
-        if((score >= temp[0] )||(temp[0] === "0")){
+        if((score > temp[0] )||(temp[0] === "0")){
             for( j = i ; j < 4 ; j++){
+                if((i == 0)&&(j == 0)){
+                    alert("NEW HIGHSCORE!");
+                }
                 let str1=localStorage.getItem((j+1)+"score")
                 name1 = str1.match(/(\D+)/);
                 temp1 = str1.match(/(\d+)/);

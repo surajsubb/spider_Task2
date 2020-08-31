@@ -14,7 +14,7 @@ input {
     border: 4px solid #c4c4c4;
     background: black; /*rgba(20,20,20,0.5);*/
     backdrop-filter: blur(10px);
-    font-size: 20px;
+    font-size: 21px;
     font-weight: bolder;
     color: white;
     display: block;
@@ -37,9 +37,19 @@ input {
 }
 .choices{
     padding-bottom: 50px; 
+    
 }
 .choices input{
     color: black;
+    text-shadow:
+		-1px -1px 0 #FFF,
+		1px -1px 0 #FFF,
+		-1px 1px 0 #FFF,
+        1px 1px 0 #FFF,
+        0px 1px 0px #FFF,
+        1px 0px 0px #FFF,
+       -1px 0px 0px #FFF;
+
 }
 #question{
     margin: auto;
@@ -82,7 +92,6 @@ td{
     text-align: center;
     border: 3px solid white;
 	border-radius: 10px;
-    /*padding: 10px;*/
 }
 th{
     width: 100px;
